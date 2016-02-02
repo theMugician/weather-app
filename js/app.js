@@ -18,26 +18,32 @@ $( document ).ready(function() {
     }
 
     function appBg(temp) {
-        if (temp <= -21) {
+        if (temp <= -30) {
             return "app-bg1";
         }
-        if (temp >= -20 && temp <= -11) {
+        if (temp >= -29 && temp <= -21) {
             return "app-bg2";
         }
-        if (temp >= -10 && temp <= -1) {
+        if (temp >= -20 && temp <= -11) {
             return "app-bg3";
         }
-        if (temp >= 0 && temp <= 12) {
+        if (temp >= -10 && temp <= 4) {
             return "app-bg4";
         }
-        if (temp >= 13 && temp <= 25) {
+        if (temp >= 5 && temp <= 15) {
             return "app-bg5";
         }
-        if (temp >= 26 && temp <= 32) {
+        if (temp >= 16 && temp <= 24) {
             return "app-bg6";
         }
-        if (temp >= 33) {
+        if (temp >= 25 && temp <= 32) {
             return "app-bg7";
+        }
+        if (temp >= 33 && temp <= 38) {
+            return "app-bg8";
+        }
+        if (temp >= 39) {
+            return "app-bg9";
         }
     }
 
@@ -195,6 +201,7 @@ $( document ).ready(function() {
                 celsiusTemp = Math.round(celsiusTemp * 9 / 5 + 32);
             }
             $("#top").addClass(appBg(celsiusTemp));
+            //$("#top").addClass('app-bg1');
 
         }, "jsonp")
             .done(function () {
