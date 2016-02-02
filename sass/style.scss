@@ -1,0 +1,243 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+@function legacy-direction($value) {
+  @if is-direction($value) == false {
+    @error "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be a direction.";
+  }
+
+  $conversion-map: (
+          to top          : bottom,
+          to top right    : bottom left,
+          to right top    : left bottom,
+          to right        : left,
+          to bottom right : top left,
+          to right bottom : left top,
+          to bottom       : top,
+          to bottom left  : top right,
+          to left bottom  : right top,
+          to left         : right,
+          to left top     : right bottom,
+          to top left     : bottom right
+  );
+
+  @if map-has-key($conversion-map, $value) {
+    @return map-get($conversion-map, $value);
+  }
+
+  @return 90deg - $value;
+}
+
+@mixin linear-gradient($direction, $color-stops...) {
+
+  @if is-direction($direction) == false {
+    $color-stops: $direction, $color-stops;
+    $direction: 180deg;
+  }
+
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+@function is-direction($value) {
+  $is-keyword: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+  $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+  @return $is-keyword or $is-angle;
+}
+
+$appWidth: 320px;
+
+$grey: #BBBDC0;
+$lightGrey: #BCBEC0;
+$green: #39B54A;
+
+/*--------------
+  APP BACKGROUNDS
+--------------*/
+
+.app-bg1{
+  @include linear-gradient(to right, rgba(102,47,144,0.8) 0%, rgba(0,86,162,0.8) 100%);
+}
+
+.app-bg2{
+  @include linear-gradient(to right, rgba(0,86,162,0.8) 0%, rgba(39,169,225,0.8) 100%);
+}
+
+.app-bg3{
+  @include linear-gradient(to right, rgba(39,169,225,0.8) 0%, rgba(90,194,189,0.8) 100%);
+}
+
+.app-bg4{
+  @include linear-gradient(to right, rgba(90,194,189,0.8) 0%,  rgba(217,231,155,0.8) 100%);
+}
+
+.app-bg5{
+  @include linear-gradient(to right, rgba(140,198,62,0.8) 0%, rgba(254,204,63,0.8) 100%);
+}
+
+.app-bg6{
+  @include linear-gradient(to right, rgba(254,204,63,0.8) 0%, rgba(247,148,30,0.8) 100%);
+}
+
+.app-bg7{
+  @include linear-gradient(to right, rgba(247,148,30,0.8) 0%, rgba(217,27,92,0.8) 100%);
+}
+
+/*--------------
+  GENERAL
+--------------*/
+
+body{
+  //background: #E6E7E8;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.row{
+  margin: 0;
+}
+
+[class*="col-"]{
+  padding: 0;
+}
+
+/*--------------
+  APP
+--------------*/
+
+#app{
+  *:not(.wi){
+    font-family: montserrat;
+  }
+  border-radius: 4px;
+  height: 480px;
+  width: $appWidth;
+  margin-top: 40px;
+}
+
+#top{
+  height: 320px;
+  width: $appWidth;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  *{
+    text-transform: uppercase;
+    color: white;
+  }
+  #city{
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  #forecast{
+    margin: 0;
+  }
+  .summary{
+    margin-top: 40px;
+  }
+  #temp{
+    margin: 0;
+    font-size: 60px;
+  }
+  .main-wi{
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 48px;
+  }
+  .spec-icons{
+    margin-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    .wi{
+      font-size: 20px;
+    }
+  }
+  .current-specs{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+  }
+}
+
+#bottom{
+  height: 160px;
+  width: $appWidth;
+  background: white;
+  .day{
+    margin: 0 10px;
+    padding: 6px 0px;
+    color: $grey;
+    font-size: 20px;
+    border-bottom: 3px solid $grey;
+    p{
+      margin: 0;
+    }
+    .min-temp{
+      font-size: 16px;
+    }
+  }
+}
+
+/*--------------
+  TOGGLE TEMP
+--------------*/
+
+.cmn-toggle {
+  margin-left: 100px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  margin-top: 10px;
+  margin-right: 10px;
+  //display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  font-size: 20px;
+}
+
+input.cmn-toggle-round-flat + label {
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background-color: white;
+  border-radius: 40px;
+  transition: 0.4s;
+}
+input.cmn-toggle-round-flat + label:before,
+input.cmn-toggle-round-flat + label:after {
+  display: block;
+  position: absolute;
+}
+input.cmn-toggle-round-flat + label:before {
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  border-radius: 40px;
+  transition: background 0.4s;
+  color: $lightGrey;
+  content: "";
+}
+input.cmn-toggle-round-flat + label:after {
+  content: "C";
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 40px;
+  color: #fff;
+  background-color: $green;
+  border-radius: 40px;
+  transition: margin 0.4s, background 0.4s;
+}
+
+input.cmn-toggle-round-flat:checked + label:after {
+  content: "F";
+  margin-left: 40px;
+}
