@@ -27,6 +27,10 @@
   @return 90deg - $value;
 }
 
+@mixin toggle-color($color) {
+  background-color: $color;
+}
+
 @mixin linear-gradient($direction, $color-stops...) {
 
   @if is-direction($direction) == false {
@@ -46,7 +50,7 @@
   @return $is-keyword or $is-angle;
 }
 
-$appWidth: 320px;
+$appWidth: 300px;
 
 $grey: #BBBDC0;
 $lightGrey: #BCBEC0;
@@ -72,6 +76,10 @@ $green: #39B54A;
   @include linear-gradient(to bottom, rgba(90,194,189,0.8) 5%,  rgba(217,231,155,0.3) 40%, rgba(217,231,155,0) 100%);
 }
 
+.app-bg5{
+  @include linear-gradient(to bottom, rgba(217,231,155,0.8) 5%,  rgba(217,231,155,0.3) 40%, rgba(217,231,155,0) 100%);
+}
+
 .app-bg6{
   @include linear-gradient(to bottom, rgba(140,198,62,0.8) 5%, rgba(140,198,62,0.3) 40%, rgba(140,198,62,0) 100%);
 }
@@ -86,6 +94,46 @@ $green: #39B54A;
 
 .app-bg9{
   @include linear-gradient(to bottom, rgba(247,148,30,0.8) 5%, rgba(217,27,92,0.3) 40%, rgba(217,27,92,0) 100%);
+}
+
+/*--------------
+  TOGGLE COLOR
+--------------*/
+
+.toggle-color1{
+  @include toggle-color(rgba(102,47,144,1.0));
+}
+
+.toggle-color2{
+  @include toggle-color(rgba(0,86,162,1.0));
+}
+
+.toggle-color3{
+  @include toggle-color(rgba(39,169,225,1.0));
+}
+
+.toggle-color4{
+  @include toggle-color(rgba(90,194,189,1.0));
+}
+
+.toggle-color5{
+  @include toggle-color(rgba(217,231,155,1.0));
+}
+
+.toggle-color6{
+  @include toggle-color(rgba(140,198,62,1.0));
+}
+
+.toggle-color7{
+  @include toggle-color(rgba(254,204,63,1.0));
+}
+
+.toggle-color8{
+  @include toggle-color(rgba(254,204,63,1.0));
+}
+
+.toggle-color9{
+  @include toggle-color(rgba(247,148,30,1.0));
 }
 
 /*--------------
@@ -122,9 +170,26 @@ body{
   height: 480px;
   width: $appWidth;
   margin-top: 40px;
+  position: relative;
+}
+
+[class*="app-bg"]{
+  position: absolute;
+  z-index: 2;
+  height: 300px;
+  width: 300px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 #top{
+  z-index: 1;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
   height: 320px;
   width: $appWidth;
   border-top-left-radius: 4px;
@@ -132,6 +197,7 @@ body{
   *{
     text-transform: uppercase;
     color: white;
+    z-index: 3;
   }
   #city{
     font-weight: bold;
@@ -163,7 +229,7 @@ body{
   .current-specs{
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 20px;
+    font-size: 17px;
   }
 }
 
@@ -195,6 +261,7 @@ body{
   visibility: hidden;
 }
 .cmn-toggle + label {
+  z-index: 3;
   margin-top: 10px;
   margin-right: 10px;
   //display: block;
@@ -231,14 +298,16 @@ input.cmn-toggle-round-flat + label:before {
 }
 input.cmn-toggle-round-flat + label:after {
   content: "C";
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  width: 40px;
+  line-height: 36px;
+  text-align: center;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  width: 36px;
   color: #fff;
   background-color: $green;
-  border-radius: 40px;
-  transition: margin 0.4s, background 0.4s;
+  border-radius: 36px;
+  transition: margin 0.2s, background 0.2s;
 }
 
 input.cmn-toggle-round-flat:checked + label:after {

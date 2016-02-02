@@ -22,6 +22,11 @@
   background: -webkit-linear-gradient(top, rgba(90, 194, 189, 0.8) 5%, rgba(217, 231, 155, 0.3) 40%, rgba(217, 231, 155, 0) 100%);
   background: linear-gradient(to bottom, rgba(90, 194, 189, 0.8) 5%, rgba(217, 231, 155, 0.3) 40%, rgba(217, 231, 155, 0) 100%); }
 
+.app-bg5 {
+  background: rgba(217, 231, 155, 0.8);
+  background: -webkit-linear-gradient(top, rgba(217, 231, 155, 0.8) 5%, rgba(217, 231, 155, 0.3) 40%, rgba(217, 231, 155, 0) 100%);
+  background: linear-gradient(to bottom, rgba(217, 231, 155, 0.8) 5%, rgba(217, 231, 155, 0.3) 40%, rgba(217, 231, 155, 0) 100%); }
+
 .app-bg6 {
   background: rgba(140, 198, 62, 0.8);
   background: -webkit-linear-gradient(top, rgba(140, 198, 62, 0.8) 5%, rgba(140, 198, 62, 0.3) 40%, rgba(140, 198, 62, 0) 100%);
@@ -41,6 +46,36 @@
   background: rgba(247, 148, 30, 0.8);
   background: -webkit-linear-gradient(top, rgba(247, 148, 30, 0.8) 5%, rgba(217, 27, 92, 0.3) 40%, rgba(217, 27, 92, 0) 100%);
   background: linear-gradient(to bottom, rgba(247, 148, 30, 0.8) 5%, rgba(217, 27, 92, 0.3) 40%, rgba(217, 27, 92, 0) 100%); }
+
+/*--------------
+  TOGGLE COLOR
+--------------*/
+.toggle-color1 {
+  background-color: #662f90; }
+
+.toggle-color2 {
+  background-color: #0056a2; }
+
+.toggle-color3 {
+  background-color: #27a9e1; }
+
+.toggle-color4 {
+  background-color: #5ac2bd; }
+
+.toggle-color5 {
+  background-color: #d9e79b; }
+
+.toggle-color6 {
+  background-color: #8cc63e; }
+
+.toggle-color7 {
+  background-color: #fecc3f; }
+
+.toggle-color8 {
+  background-color: #fecc3f; }
+
+.toggle-color9 {
+  background-color: #f7941e; }
 
 /*--------------
   GENERAL
@@ -65,19 +100,36 @@ body {
 #app {
   border-radius: 4px;
   height: 480px;
-  width: 320px;
-  margin-top: 40px; }
+  width: 300px;
+  margin-top: 40px;
+  position: relative; }
   #app *:not(.wi) {
     font-family: montserrat; }
 
+[class*="app-bg"] {
+  position: absolute;
+  z-index: 2;
+  height: 300px;
+  width: 300px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px; }
+
 #top {
+  z-index: 1;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
   height: 320px;
-  width: 320px;
+  width: 300px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px; }
   #top * {
     text-transform: uppercase;
-    color: white; }
+    color: white;
+    z-index: 3; }
   #top #city {
     font-weight: bold;
     margin-bottom: 0; }
@@ -101,11 +153,11 @@ body {
   #top .current-specs {
     padding-left: 10px;
     padding-right: 10px;
-    font-size: 20px; }
+    font-size: 17px; }
 
 #bottom {
   height: 160px;
-  width: 320px;
+  width: 300px;
   background: white; }
   #bottom .day {
     margin: 0 10px;
@@ -126,6 +178,7 @@ body {
   visibility: hidden; }
 
 .cmn-toggle + label {
+  z-index: 3;
   margin-top: 10px;
   margin-right: 10px;
   position: relative;
@@ -160,14 +213,16 @@ input.cmn-toggle-round-flat + label:before {
 
 input.cmn-toggle-round-flat + label:after {
   content: "C";
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  width: 40px;
+  line-height: 36px;
+  text-align: center;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  width: 36px;
   color: #fff;
   background-color: #39B54A;
-  border-radius: 40px;
-  transition: margin 0.4s, background 0.4s; }
+  border-radius: 36px;
+  transition: margin 0.2s, background 0.2s; }
 
 input.cmn-toggle-round-flat:checked + label:after {
   content: "F";
