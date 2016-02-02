@@ -1,0 +1,90 @@
+<html>
+<!--weather-app-->
+<head>
+    <script type= "text/javascript" src="http://code.jquery.com/jquery-2.2.0.min.js" ></script>
+    <script type= "text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+    <script type= "text/javascript" src="js/app.js" ></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Weather-App</title>
+</head>
+
+<body>
+<div id="app" class="container">
+    <div id="top">
+        <div class="row text-right">
+            <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round-flat" type="checkbox">
+            <label style="color: #BCBEC0" for="cmn-toggle-4">C&nbsp;&nbsp;&nbsp;F</label>
+        </div>
+
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <h2 id="city">Montreal</h1>
+                    <h3 id="forecast">Sunny</h2>
+            </div>
+        </div>
+
+        <div class="row summary">
+            <div class="col-xs-4 col-xs-offset-2 text-right">
+                <i class="main-wi wi"></i>
+            </div>
+            <div class="col-xs-4">
+                <h1 id="temp">-5</h1>
+            </div>
+        </div>
+
+        <div class="row spec-icons">
+            <div class="col-xs-4">
+                <i class="wi wi-strong-wind"></i>
+            </div>
+            <div class="col-xs-4 text-center">
+                <i class="wi wi-raindrop"></i>
+            </div>
+            <div class="col-xs-2 col-xs-offset-2 text-center">
+                <i class="wi wi-rain"></i>
+            </div>
+        </div>
+
+        <div class="row current-specs">
+            <div class="col-xs-4">
+                <p class="spec-wind">20 KMH</p>
+            </div>
+            <div class="col-xs-4 text-center">
+                <p class="spec-hum">57%</p>
+            </div>
+            <div class="col-xs-2 col-xs-offset-2 text-center">
+                <p class="spec-precip">60%</p>
+            </div>
+        </div>
+
+    </div><!-- top -->
+    <div id="bottom">
+        <div class="row day">
+            <div class="col-xs-4">
+                <p class="day-name">FRI</p>
+            </div>
+            <div class="col-xs-4 text-center">
+                <i class="wi wi-rain"></i>
+            </div>
+            <div class="col-xs-4 text-right">
+                <p class="day-temp">12&deg;&nbsp;<span class="min-temp">6&deg;<span></p>
+            </div>
+        </div><!--end day-->
+
+        <div class="row day">
+            <div class="col-xs-4">
+                <p class="day-name">FRI</p>
+            </div>
+            <div class="col-xs-4 text-center">
+                <i class="wi wi-rain"></i>
+            </div>
+            <div class="col-xs-4 text-right">
+                <p class="day-temp">12&deg;&nbsp;<span class="min-temp">6&deg;<span></p>
+            </div>
+        </div><!--end day-->
+    </div>
+
+</div>
+</body>
+
+</html>
