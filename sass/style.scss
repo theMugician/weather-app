@@ -302,10 +302,10 @@ input.cmn-toggle-round-flat + label:after {
   text-align: center;
   top: 2px;
   left: 2px;
+  //background-color: $green;
   bottom: 2px;
   width: 36px;
   color: #fff;
-  background-color: $green;
   border-radius: 36px;
   transition: margin 0.2s, background 0.2s;
 }

@@ -220,7 +220,6 @@ input.cmn-toggle-round-flat + label:after {
   bottom: 2px;
   width: 36px;
   color: #fff;
-  background-color: #39B54A;
   border-radius: 36px;
   transition: margin 0.2s, background 0.2s; }
 

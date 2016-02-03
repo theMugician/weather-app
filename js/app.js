@@ -19,31 +19,31 @@ $( document ).ready(function() {
 
     function toggleColor(temp) {
         if (temp <= -30) {
-            return "app-bg1";
+            return "toggle-color1";
         }
         if (temp >= -29 && temp <= -21) {
-            return "app-bg2";
+            return "toggle-color2";
         }
         if (temp >= -20 && temp <= -11) {
-            return "app-bg3";
+            return "toggle-color3";
         }
         if (temp >= -10 && temp <= 4) {
-            return "app-bg4";
+            return "toggle-color4";
         }
         if (temp >= 5 && temp <= 15) {
-            return "app-bg5";
+            return "toggle-color5";
         }
         if (temp >= 16 && temp <= 24) {
-            return "app-bg6";
+            return "toggle-color6";
         }
         if (temp >= 25 && temp <= 32) {
-            return "app-bg7";
+            return "toggle-color7";
         }
         if (temp >= 33 && temp <= 38) {
-            return "app-bg8";
+            return "toggle-color8";
         }
         if (temp >= 39) {
-            return "app-bg9";
+            return "toggle-color9";
         }
     }
 
@@ -229,6 +229,7 @@ $( document ).ready(function() {
             var appBg = "https://s3-us-west-2.amazonaws.com/weather-app/app-bg/app-" + background(summary) + ".jpg";
             $("#top").css("background-image", "url('" + appBg + "')");
 
+
             //Apply App background color
             var celsiusTemp = temp;
             if (units === "f") {
@@ -238,6 +239,11 @@ $( document ).ready(function() {
             console.log("this is $appCol: " + $appCol);
             $("#app").prepend($appCol);
             //$("#top").addClass('app-bg1');
+
+            //Apply toggle color
+            //var $toggle = $("input.cmn-toggle-round-flat + label:after");
+            $("input.cmn-toggle-round-flat + label:after").css("background-color", "red");
+            console.log($toggle);
 
         }, "jsonp")
             .done(function () {
