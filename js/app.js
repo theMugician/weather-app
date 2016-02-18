@@ -77,7 +77,6 @@ $( document ).ready(function() {
         }
     }
 
-//var theLabel =  $("label[for='cmn-toggle-4']");
 //convert Units
     $("label[for='cmn-toggle-4']").on("click", function () {
         var currTemp = parseInt($("#temp").html());
@@ -92,8 +91,6 @@ $( document ).ready(function() {
         console.log("new temp: " + newTemp);
         $("#temp").html(Math.round(newTemp) + "&deg;");
     });
-
-//console.log(theLabel);
 
     function getLocation() {
         $.getJSON("http://ipinfo.io", function (location) {
@@ -169,10 +166,13 @@ $( document ).ready(function() {
     function getWeather(theLocation, country) {
         //grab units
         var units = "";
+        var speedUnits = "";
         console.log(country);
         if (country !== 'US' || 'BS' || 'BZ' || 'KY' || 'PW') {
+            speedUnits = "KMH";
             units = "c";
         } else {
+            speedUnits = "MPH";
             units = "f";
         }
         var apiUnits = "";
@@ -199,17 +199,39 @@ $( document ).ready(function() {
             var temp = Math.round(currWeather.temperature);
             var summary = currWeather.summary;
             var humidity = 100 * currWeather.humidity;
-            console.log(typeof humidity);
             var precipitation = currWeather.precipProbability;
             var wind = currWeather.windSpeed;
-            $(".spec-wind").html(wind + " KMH");
+            $(".spec-wind").html(wind + " " + speedUnits);
             $(".spec-hum").html(humidity + "%");
             $(".spec-precip").html(precipitation + "%");
 
             //Weekly Weather
             var dailyWeather = weather.daily;
             for (var i = 1; i <= 3; i++) {
-                dailyWeather.data[i];
+                var day = dailyWeather.data[i];
+                var dayOfWeek = day.time;
+                dayOfWeek = new Date(dayOfWeek * 1000);
+                console.log(typeof dayOfWeek);
+                dayOfWeek = dayOfWeek.toDateString();
+                dayOfWeek = dayOfWeek.substring(0, 3);
+                var minTemp = Math.round(day.temperatureMin);
+                var maxTemp = Math.round(day.temperatureMax);
+                var icon = day.icon;
+                var wiIcon = "wi-" + getIcon(icon);
+
+                var dayRow = $("<div class='row day'></div>");
+                var dayName = $("<div class='col-xs-4'><p class='day-name'>" + dayOfWeek + "</p></div>");
+                var dayIcon = $("<div class='col-xs-4 text-center'><i class='wi " + wiIcon + "'></i></div>");
+                var dayTemp = $("<div class='col-xs-4 text-right'><div class='row'></div></div>");
+                var maxValue = $("<div class='col-xs-7'><p class='day-temp'>" + maxTemp + "&deg;</p></div>");
+                var minValue = $("<div class='col-xs-5'><p class='min-temp'>" + minTemp + "&deg;</p></div>");
+                //var tempValue = $("<p class='day-temp'>" + maxTemp + "&deg;&nbsp;<span class='min-temp'>" + minTemp + "&deg;<span>");
+                dayTemp.append(maxValue);
+                dayTemp.append(minValue);
+                dayRow.append(dayName);
+                dayRow.append(dayIcon);
+                dayRow.append(dayTemp);
+                $("#bottom").append(dayRow);
             }
 
             $("#forecast").html(summary);
@@ -240,10 +262,8 @@ $( document ).ready(function() {
             $("#app").prepend($appCol);
             //$("#top").addClass('app-bg1');
 
-            //Apply toggle color
-            //var $toggle = $("input.cmn-toggle-round-flat + label:after");
-            $("input.cmn-toggle-round-flat + label:after").css("background-color", "red");
-            console.log($toggle);
+            var $toggle = $("input.cmn-toggle-round-flat").next("label");
+            $toggle.addClass(toggleColor(celsiusTemp));
 
         }, "jsonp")
             .done(function () {

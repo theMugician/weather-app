@@ -50,31 +50,31 @@
 /*--------------
   TOGGLE COLOR
 --------------*/
-.toggle-color1 {
+input.cmn-toggle-round-flat + label.toggle-color1:after {
   background-color: #662f90; }
 
-.toggle-color2 {
+input.cmn-toggle-round-flat + label.toggle-color2:after {
   background-color: #0056a2; }
 
-.toggle-color3 {
+input.cmn-toggle-round-flat + label.toggle-color3:after {
   background-color: #27a9e1; }
 
-.toggle-color4 {
+input.cmn-toggle-round-flat + label.toggle-color4:after {
   background-color: #5ac2bd; }
 
-.toggle-color5 {
+input.cmn-toggle-round-flat + label.toggle-color5:after {
   background-color: #d9e79b; }
 
-.toggle-color6 {
+input.cmn-toggle-round-flat + label.toggle-color6:after {
   background-color: #8cc63e; }
 
-.toggle-color7 {
+input.cmn-toggle-round-flat + label.toggle-color7:after {
   background-color: #fecc3f; }
 
-.toggle-color8 {
+input.cmn-toggle-round-flat + label.toggle-color8:after {
   background-color: #fecc3f; }
 
-.toggle-color9 {
+input.cmn-toggle-round-flat + label.toggle-color9:after {
   background-color: #f7941e; }
 
 /*--------------
@@ -122,7 +122,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   background-position: center;
-  height: 320px;
+  height: 280px;
   width: 300px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px; }
@@ -156,15 +156,18 @@ body {
     font-size: 17px; }
 
 #bottom {
-  height: 160px;
+  height: 120px;
   width: 300px;
   background: white; }
   #bottom .day {
     margin: 0 10px;
-    padding: 6px 0px;
+    padding: 8px 0px;
     color: #BBBDC0;
     font-size: 20px;
+    line-height: 20px;
     border-bottom: 3px solid #BBBDC0; }
+    #bottom .day:last-child {
+      border: none; }
     #bottom .day p {
       margin: 0; }
     #bottom .day .min-temp {
