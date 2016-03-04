@@ -265,7 +265,14 @@ body{
     }
   }
 }
-
+.hero__left-content {
+  float: left;
+  width: 40%;
+}
+.hero__right-content {
+  float:left;
+  width: 60%;
+}
 /*--------------
   TOGGLE TEMP
 --------------*/

@@ -83,7 +83,7 @@ $( document ).ready(function() {
         var newTemp;
         if ($('.cmn-toggle').prop('checked')) {
             //Farenheit is true
-            //Celsius is false
+            //Celsius is falsewill
             newTemp = (currTemp - 32) * 5 / 9;
         } else {
             newTemp = currTemp * 9 / 5 + 32;
@@ -96,7 +96,7 @@ $( document ).ready(function() {
         $.getJSON("http://ipinfo.io", function (location) {
             getWeather(location.loc, location.country);
             $("#city").html(location.city);
-
+            console.log("city is " + location.city);
             //$("#forecast").html
         }, "jsonp")
             .done(function () {
@@ -198,7 +198,7 @@ $( document ).ready(function() {
             //Current Weather
             var temp = Math.round(currWeather.temperature);
             var summary = currWeather.summary;
-            var humidity = 100 * currWeather.humidity;
+            var humidity = Math.round(100 * currWeather.humidity);
             var precipitation = currWeather.precipProbability;
             var wind = currWeather.windSpeed;
             $(".spec-wind").html(wind + " " + speedUnits);
